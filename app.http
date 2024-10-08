@@ -1,0 +1,63 @@
+### Retrieve all tasks
+GET http://localhost:3000/api/tasks/
+
+
+### Retrieve tasks by Id
+GET http://localhost:3000/api/tasks/:id
+
+
+### Create task
+POST http://localhost:3000/api/tasks
+
+
+### Update a task
+PUT http://localhost:3000/api/tasks/:id
+
+
+### Update a part of task
+PATCH http://localhost:3000/api/tasks/:id
+
+
+### Delete a task by Id
+DELETE http://localhost:3000/api/tasks/:id
+
+
+### Get a task by Id
+GET http://localhost:3000/api/tasks HTTP/1.1
+
+
+### Post Example:
+POST http://localhost:3000/api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "New Task Name",
+  "description": "New Description",
+  "completed": false
+}
+
+
+### Update Example:
+PUT http://localhost:3000/api/tasks/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Updated Task",
+  "description": "Updated Description",
+  "completed": true
+}
+
+
+### Patch Example
+PATCH http://localhost:3000/api/tasks/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "Updated Description",
+  "completed": true
+}
+
+
+### Delete Example:
+DELETE http://localhost:3000/api/tasks/1.2
