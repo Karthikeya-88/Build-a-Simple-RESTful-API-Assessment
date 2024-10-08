@@ -2,10 +2,12 @@ const express = require("express");
 const instance = express.Router();
 const tasks = require("./products");
 
+//Get all tasks/products
 instance.get("/", (request, response) => {
   response.json(tasks);
 });
 
+//Get tasks/products by id
 instance.get("/:id", (request, response) => {
   const task = tasks.find(
     (eachTask) => eachTask.id === parseInt(request.params.id)
@@ -18,6 +20,7 @@ instance.get("/:id", (request, response) => {
   }
 });
 
+//Post/Create tasks/products
 instance.post("/", (request, response) => {
   const { title, description } = request.body;
   if (!title || !description) {
@@ -34,6 +37,7 @@ instance.post("/", (request, response) => {
   }
 });
 
+//Put/Update tasks/products by Id
 instance.put("/:id", (request, response) => {
   const task = tasks.find(
     (eachTask) => eachTask.id === parseInt(request.params.id)
@@ -49,6 +53,7 @@ instance.put("/:id", (request, response) => {
   }
 });
 
+//Patch/update a part of tasks/products by Id
 instance.patch("/:id", (request, response) => {
   const task = tasks.find(
     (eachTask) => eachTask.id === parseInt(request.params.id)
@@ -63,6 +68,7 @@ instance.patch("/:id", (request, response) => {
   response.send(task);
 });
 
+//Delete tasks/products by Id
 instance.delete("/:id", (request, response) => {
   const taskIndex = tasks.findIndex(
     (eachTask) => eachTask.id === parseInt(request.params.id)
