@@ -1,0 +1,132 @@
+Endpoints
+
+1. Get All Tasks
+- URL: /api/tasks
+- Method: GET
+- Response: 200 OK with array of task objects
+- Example Response:
+
+[
+  {
+    "id": 1,
+    "title": "Task 1",
+    "description": "Description 1",
+    "completed": false
+  },
+  {
+    "id": 2,
+    "title": "Task 2",
+    "description": "Description 2",
+    "completed": true
+  }
+]
+
+2. Get Task by ID
+- URL: /api/tasks/:id
+- Method: GET
+- Path Parameters: id (integer)
+- Response: 200 OK with task object or 404 Not Found
+- Example Request: GET /api/tasks/1
+- Example Response:
+
+{
+  "id": 1,
+  "title": "Task 1",
+  "description": "Description 1",
+  "completed": false
+}
+
+3. Create Task
+- URL: /api/tasks
+- Method: POST
+- Request Body: title (string), description (string)
+- Response: 201 Created with new task object or 400 Bad Request
+- Example Request:
+
+POST /api/tasks HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "New Task",
+  "description": "New Description"
+}
+
+- Example Response:
+
+{
+  "id": 3,
+  "title": "New Task",
+  "description": "New Description",
+  "completed": false
+}
+
+4. Update Task
+
+- URL: /api/tasks/:id
+- Method: PUT
+- Path Parameters: id (integer)
+- Request Body: title (string), description (string), completed (boolean)
+- Response: 200 OK with updated task object or 404 Not Found
+- Example Request:
+
+PUT /api/tasks/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Updated Task",
+  "description": "Updated Description",
+  "completed": true
+}
+
+- Example Response:
+
+{
+  "id": 1,
+  "title": "Updated Task",
+  "description": "Updated Description",
+  "completed": true
+}
+
+5. Partially Update Task
+
+- URL: /api/tasks/:id
+- Method: PATCH
+- Path Parameters: id (integer)
+- Request Body: title (string), description (string), completed (boolean)
+- Response: 200 OK with updated task object or 404 Not Found
+- Example Request:
+
+PATCH /api/tasks/1 HTTP/1.1
+Content-Type: application/json
+
+{
+  "title": "Partially Updated Task"
+}
+
+- Example Response:
+
+{
+  "id": 1,
+  "title": "Partially Updated Task",
+  "description": "Updated Description",
+  "completed": true
+}
+
+6. Delete Task
+
+- URL: /api/tasks/:id
+- Method: DELETE
+- Path Parameters: id (integer)
+- Response: 204 No Content or 404 Not Found
+- Example Request: DELETE /api/tasks/1
+- Example Response: No content
+
+Error Handling
+
+- 400 Bad Request: Invalid request body or missing required fields
+- 404 Not Found: Task not found
+
+
+Notes
+- The API uses an in-memory array to store tasks.
+- The API does not support authentication or authorization.
